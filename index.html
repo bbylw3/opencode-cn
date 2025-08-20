@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>opencode 使用教程 - AI 编程代理指南</title>
+    <meta name="description" content="完整的 opencode 命令行工具使用教程，从零开始学习 AI 编程代理">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <span>opencode</span>
+            </div>
+            <nav class="nav-links" role="navigation" aria-label="Main navigation">
+                <a href="#intro" class="nav-link">简介</a>
+                <a href="#install" class="nav-link">安装</a>
+                <a href="#quickstart" class="nav-link">快速开始</a>
+                <a href="#commands" class="nav-link">命令详解</a>
+                <a href="#advanced" class="nav-link">进阶技巧</a>
+                <a href="#vscode" class="nav-link">VS Code 集成</a>
+            </nav>
+            <div class="nav-controls">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
+                        <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" />
+                        <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" />
+                        <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" />
+                        <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    掌握 <span class="highlight">opencode</span><br>
+                    AI 编程的新纪元
+                </h1>
+                <p class="hero-subtitle">
+                    从零开始学习 opencode 命令行工具，释放 AI 编程的无限潜能
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="scrollToSection('install')">
+                        开始学习
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('quickstart')">
+                        快速预览
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="terminal-preview">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-text">
+                            <span class="terminal-prompt">$</span>
+                            <span class="terminal-command">opencode</span>
+                        </div>
+                        <div class="terminal-output">
+                            🤖 opencode 启动中...<br>
+                            📁 扫描项目文件...<br>
+                            ✨ 准备就绪！输入你的请求：
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content" role="main">
+        <section id="intro" class="section" aria-labelledby="intro-title">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 id="intro-title" class="section-title">什么是 opencode？</h2>
+                    <p class="section-subtitle">开源 AI 编程代理，让代码编写变得更智能</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>自然语言交互</h3>
+                        <p>用日常语言描述需求，AI 自动生成代码</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📁</div>
+                        <h3>智能上下文</h3>
+                        <p>自动理解项目结构和代码逻辑</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>直接修改</h3>
+                        <p>无需手动复制粘贴，直接应用代码变更</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>快速迭代</h3>
+                        <p>支持撤销、重做和版本控制集成</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="install" class="section" aria-labelledby="install-title">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 id="install-title" class="section-title">安装与配置</h2>
+                    <p class="section-subtitle">5 分钟完成环境搭建</p>
+                </div>
+                <div class="install-grid">
+                    <div class="install-card">
+                        <h3>Windows 安装</h3>
+                        <div class="install-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>下载可执行文件</h4>
+                                    <p>从 <a href="https://github.com/sst/opencode/releases" target="_blank">GitHub
+                                            Releases</a> 下载最新版本</p>
+                                    <div class="code-block">
+                                        <code>opencode-windows-x64.zip</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>解压并配置环境变量</h4>
+                                    <p>将 opencode.exe 添加到系统 Path 中</p>
+                                    <div class="code-block">
+                                        <code>setx PATH "%PATH%;C:\path\to\opencode"</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>验证安装</h4>
+                                    <div class="code-block">
+                                        <code>opencode --version</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="install-card">
+                        <h3>配置 API 密钥</h3>
+                        <div class="api-options">
+                            <div class="api-option">
+                                <h4>方式一：环境变量</h4>
+                                <div class="code-block">
+                                    <code>setx OPENAI_API_KEY "your-api-key"</code>
+                                </div>
+                            </div>
+                            <div class="api-option">
+                                <h4>方式二：内置登录</h4>
+                                <div class="code-block">
+                                    <code>opencode auth login</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quickstart" class="section" aria-labelledby="quickstart-title">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 id="quickstart-title" class="section-title">快速上手</h2>
+                    <p class="section-subtitle">3 步开始你的 AI 编程之旅</p>
+                </div>
+                <div class="quickstart-steps">
+                    <div class="quickstart-step">
+                        <div class="step-icon">🚀</div>
+                        <h3>启动会话</h3>
+                        <div class="code-block">
+                            <code>cd your-project && opencode</code>
+                        </div>
+                        <p>进入项目目录并启动 opencode</p>
+                    </div>
+                    <div class="quickstart-step">
+                        <div class="step-icon">⚙️</div>
+                        <h3>初始化项目</h3>
+                        <div class="code-block">
+                            <code>/init</code>
+                        </div>
+                        <p>让 AI 熟悉你的项目结构</p>
+                    </div>
+                    <div class="quickstart-step">
+                        <div class="step-icon">💬</div>
+                        <h3>开始对话</h3>
+                        <div class="example-request">
+                            "给我的 Express 应用添加一个 /health 接口"
+                        </div>
+                        <p>用自然语言描述你的需求</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="commands" class="section" aria-labelledby="commands-title">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 id="commands-title" class="section-title">核心命令详解</h2>
+                    <p class="section-subtitle">掌握所有 / 命令，提升工作效率</p>
+                </div>
+                <div class="commands-grid">
+                    <div class="command-category">
+                        <h3>核心操作</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>/init</code>
+                                <p>初始化项目，扫描文件结构</p>
+                            </div>
+                            <div class="command-item">
+                                <code>/commit</code>
+                                <p>提交所有更改到 Git</p>
+                            </div>
+                            <div class="command-item">
+                                <code>/undo</code>
+                                <p>撤销上一步操作</p>
+                            </div>
+                            <div class="command-item">
+                                <code>/exit</code>
+                                <p>退出 opencode 会话</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="command-category">
+                        <h3>模型配置</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>/models</code>
+                                <p>切换不同的 AI 模型</p>
+                            </div>
+                            <div class="command-item">
+                                <code>/themes</code>
+                                <p>更改界面主题</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="command-category">
+                        <h3>上下文管理</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>/add <文件></code>
+                                <p>添加文件到上下文中</p>
+                            </div>
+                            <div class="command-item">
+                                <code>/remove <文件></code>
+                                <p>从上下文中移除文件</p>
+                            </div>
+                            <div class="command-item">
+                                <code>/files</code>
+                                <p>查看当前上下文文件</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="command-category">
+                        <h3>其他命令</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>/help</code>
+                                <p>显示帮助信息</p>
+                            </div>
+                            <div class="command-item">
+                                <code>/history</code>
+                                <p>查看操作历史</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advanced" class="section" aria-labelledby="advanced-title">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 id="advanced-title" class="section-title">进阶技巧与最佳实践</h2>
+                    <p class="section-subtitle">基于原文档深度扩展的实用指南</p>
+                </div>
+                <div class="advanced-content">
+                    <div class="advanced-section">
+                        <h3>🎯 明确你的意图</h3>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">❌</div>
+                                <h3>不好的示例</h3>
+                                <p>当你这样请求时，AI 很难理解你的具体需求：</p>
+                                <div class="tip-example">
+                                    "修复我的代码"
+                                </div>
+                                <p>AI 需要猜测你想要什么，这往往导致不准确的结果。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">✅</div>
+                                <h3>好的示例</h3>
+                                <p>具体描述问题和期望的解决方案：</p>
+                                <div class="tip-example">
+                                    "在 userController.js 文件中，当用户未登录时，/profile 路由应该重定向到 /login，而不是抛出 500 错误。"
+                                </div>
+                                <p>AI 能准确理解并提供针对性的解决方案。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">📍</div>
+                                <h3>文件路径的重要性</h3>
+                                <p>总是指定具体的文件路径，让 AI 知道操作的目标：</p>
+                                <div class="tip-example">
+                                    "在 src/routes/auth.js 中添加密码重置功能，使用 JWT token 验证"
+                                </div>
+                                <p>这样 AI 就能直接定位到正确的文件并进行修改。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🎯</div>
+                                <h3>预期行为描述</h3>
+                                <p>详细说明你希望实现的功能和行为：</p>
+                                <div class="tip-example">
+                                    "创建一个用户注册 API，需要：邮箱验证、密码强度检查、返回 JWT token、错误处理"
+                                </div>
+                                <p>AI 会据此生成完整的功能代码。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advanced-section">
+                        <h3>🔄 分步解决复杂问题</h3>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">🚫</div>
+                                <h3>避免大而全的请求</h3>
+                                <p>一次性要求太多功能会导致质量下降：</p>
+                                <div class="tip-example">
+                                    "创建一个完整的用户管理系统，包括注册、登录、密码重置、个人资料管理、权限控制等所有功能"
+                                </div>
+                                <p>AI 难以一次性处理如此复杂的请求。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">📋</div>
+                                <h3>任务分解策略</h3>
+                                <p>将复杂功能分解成可管理的步骤：</p>
+                                <div class="tip-example">
+                                    <strong>第一步:</strong> "创建一个 Button React 组件，包含 onClick 和 children props。"<br>
+                                    <strong>第二步:</strong> "现在为这个 Button 组件添加一个 disabled 状态的样式。"<br>
+                                    <strong>第三步:</strong> "为 Button 组件添加 loading 状态和 spinner 动画。"
+                                </div>
+                                <p>每个步骤都专注于一个具体的功能点。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🔧</div>
+                                <h3>依赖关系处理</h3>
+                                <p>按照逻辑顺序逐步构建功能：</p>
+                                <div class="tip-example">
+                                    <strong>第1步:</strong> 创建数据库模型<br>
+                                    <strong>第2步:</strong> 实现数据访问层<br>
+                                    <strong>第3步:</strong> 构建业务逻辑层<br>
+                                    <strong>第4步:</strong> 开发 API 端点<br>
+                                    <strong>第5步:</strong> 添加前端界面
+                                </div>
+                                <p>确保每个步骤都建立在之前步骤的基础上。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">✅</div>
+                                <h3>验证与测试</h3>
+                                <p>每个步骤完成后都要验证结果：</p>
+                                <div class="tip-example">
+                                    "检查生成的代码是否正确实现了所需功能，如果有问题请修复"
+                                </div>
+                                <p>及时发现并修正问题，避免积累错误。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advanced-section">
+                        <h3>📂 结合 Git 使用</h3>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">🔍</div>
+                                <h3>工作区检查</h3>
+                                <p>使用 opencode 前先确保工作区状态：</p>
+                                <div class="tip-example">
+                                    <code>git status</code><br>
+                                    <code>git diff</code>
+                                </div>
+                                <p>查看是否有未提交的更改，避免冲突。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">💾</div>
+                                <h3>及时提交</h3>
+                                <p>使用 /commit 命令保存有效的修改：</p>
+                                <div class="tip-example">
+                                    <code>/commit</code><br>
+                                    <span>opencode 会自动生成合适的 commit 信息</span>
+                                </div>
+                                <p>或者使用 git commit 手动提交，并写明修改内容。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🌿</div>
+                                <h3>分支策略</h3>
+                                <p>为每个功能创建独立的分支：</p>
+                                <div class="tip-example">
+                                    <code>git checkout -b feature/user-auth</code><br>
+                                    <code>git checkout -b feature/product-api</code>
+                                </div>
+                                <p>保持主分支的整洁，便于代码审查和回滚。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🔄</div>
+                                <h3>定期同步</h3>
+                                <p>定期推送到远程仓库：</p>
+                                <div class="tip-example">
+                                    <code>git push origin feature-branch</code>
+                                </div>
+                                <p>避免本地代码丢失，方便团队协作。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advanced-section">
+                        <h3>🎛️ 善用上下文管理</h3>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">📊</div>
+                                <h3>查看当前上下文</h3>
+                                <p>使用 /files 命令了解 AI 当前可见的文件：</p>
+                                <div class="tip-example">
+                                    <code>/files</code>
+                                </div>
+                                <p>确保 AI 看到了所有相关的文件。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">➕</div>
+                                <h3>添加重要文件</h3>
+                                <p>手动添加 AI 需要了解的文件：</p>
+                                <div class="tip-example">
+                                    <code>/add src/config/database.js</code><br>
+                                    <code>/add src/models/User.js</code>
+                                </div>
+                                <p>让 AI 理解项目的核心配置和数据结构。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">➖</div>
+                                <h3>移除无关文件</h3>
+                                <p>排除不相关的文件减少干扰：</p>
+                                <div class="tip-example">
+                                    <code>/remove dist/bundle.js</code><br>
+                                    <code>/remove node_modules/</code>
+                                </div>
+                                <p>专注于当前任务相关的代码文件。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🎯</div>
+                                <h3>大型项目策略</h3>
+                                <p>对于大型项目，只包含当前模块的文件：</p>
+                                <div class="tip-example">
+                                    <strong>当前任务:</strong> 用户认证模块<br>
+                                    <strong>包含文件:</strong> auth.js, user.js, middleware.js<br>
+                                    <strong>排除文件:</strong> 产品管理、订单处理等无关模块
+                                </div>
+                                <p>提高 AI 响应的准确性和速度。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advanced-section">
+                        <h3>⚡ 深入的技术细节</h3>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">🔧</div>
+                                <h3>环境变量配置</h3>
+                                <p>正确设置 API 密钥到系统环境变量：</p>
+                                <div class="tip-example">
+                                    <strong>Windows:</strong><br>
+                                    <code>setx OPENAI_API_KEY "your-key-here"</code><br>
+                                    <strong>Linux/Mac:</strong><br>
+                                    <code>export OPENAI_API_KEY="your-key-here"</code>
+                                </div>
+                                <p>重启终端后生效，确保密钥安全。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">📁</div>
+                                <h3>项目初始化</h3>
+                                <p>/init 命令的详细作用：</p>
+                                <div class="tip-example">
+                                    <strong>扫描内容:</strong><br>
+                                    • 项目结构和文件组织<br>
+                                    • 代码语言和框架类型<br>
+                                    • 依赖关系和配置文件<br>
+                                    • 代码规范和风格
+                                </div>
+                                <p>帮助 AI 更好地理解项目背景。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">⚙️</div>
+                                <h3>模型配置</h3>
+                                <p>根据需求选择合适的 AI 模型：</p>
+                                <div class="tip-example">
+                                    <strong>快速任务:</strong> GPT-3.5-turbo<br>
+                                    <strong>复杂代码生成:</strong> GPT-4<br>
+                                    <strong>高质量对话:</strong> Claude-3-opus
+                                </div>
+                                <p>不同模型在速度、质量、成本间做权衡。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🎨</div>
+                                <h3>界面主题</h3>
+                                <p>使用 /themes 命令切换界面配色：</p>
+                                <div class="tip-example">
+                                    <code>/themes</code><br>
+                                    <span>选择适合你的配色方案</span>
+                                </div>
+                                <p>改善长时间使用的视觉体验。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advanced-section">
+                        <h3>🚀 更多实用技巧</h3>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">⌨️</div>
+                                <h3>终端快捷键</h3>
+                                <p>提高终端操作效率：</p>
+                                <div class="tip-example">
+                                    <strong>Ctrl+C:</strong> 取消当前操作<br>
+                                    <strong>Ctrl+L:</strong> 清空屏幕<br>
+                                    <strong>↑↓:</strong> 历史命令导航<br>
+                                    <strong>Tab:</strong> 自动补全
+                                </div>
+                                <p>熟练使用可以大大提升工作效率。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🔄</div>
+                                <h3>撤销操作</h3>
+                                <p>使用 /undo 命令撤销最近的修改：</p>
+                                <div class="tip-example">
+                                    <code>/undo</code><br>
+                                    <span>撤销上一步的代码修改</span>
+                                </div>
+                                <p>如果对 AI 生成的代码不满意，立即撤销重试。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">📚</div>
+                                <h3>会话历史</h3>
+                                <p>使用 /history 查看当前会话的所有操作：</p>
+                                <div class="tip-example">
+                                    <code>/history</code>
+                                </div>
+                                <p>回顾之前的请求和 AI 的响应，总结经验教训。</p>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">❓</div>
+                                <h3>获取帮助</h3>
+                                <p>使用 /help 命令查看所有可用命令：</p>
+                                <div class="tip-example">
+                                    <code>/help</code>
+                                </div>
+                                <p>随时了解新的功能和命令选项。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vscode" class="section" aria-labelledby="vscode-title">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 id="vscode-title" class="section-title">VS Code 集成</h2>
+                    <p class="section-subtitle">无缝开发体验</p>
+                </div>
+                <div class="vscode-features">
+                    <div class="vscode-card">
+                        <h3>安装扩展</h3>
+                        <p>在 VS Code 扩展市场搜索 "opencode" 并安装</p>
+                        <div class="code-block">
+                            <code>Ctrl+Shift+P → "Extensions: Install Extension" → "opencode"</code>
+                        </div>
+                    </div>
+                    <div class="vscode-card">
+                        <h3>快捷键</h3>
+                        <div class="shortcut-list">
+                            <div class="shortcut-item">
+                                <kbd>Ctrl+Esc</kbd>
+                                <span>打开/切换 opencode</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <kbd>Ctrl+Shift+Esc</kbd>
+                                <span>新建 opencode 会话</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <span>opencode</span>
+                </div>
+                <p>让 AI 编程变得更简单、更智能</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/sst/opencode" target="_blank">GitHub</a>
+                <a href="https://github.com/sst/opencode/releases" target="_blank">下载</a>
+                <a href="#intro">文档</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
